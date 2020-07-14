@@ -21,7 +21,8 @@ export class PrimengImportMigrator {
       .split('{')[1]
       .split('}')[0]
       .replace(/\s+/g, '')
-      .split(',');
+      .split(',')
+      .filter(_ => _ !== undefined && _ !== '');
   }
 
   buildMigratedImportStatement(imports: string[]): string {
