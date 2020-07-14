@@ -52,8 +52,25 @@ describe('PrimengImportMigrator', () => {
     const expected = `import { TreeModule } from 'primeng/tree';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';`;
+    expect(actual).toEqual(expected);
+  });
+
+  it('should migrate', () => {
+    const actual = sut.migrate(allImportsFileContentStub);
+    const expected = `import {
+  RouterModule,
+  Routes
+} from '@angular/router';
+import { SharedModule } from '../shared/components/shared.module';
+import { TreeModule } from 'primeng/tree';
+import { ToggleButtonModule } from 'primeng/togglebutton';
+import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
-`;
+import { ButtonModule } from 'primeng/button';
+import { TableModule } from 'primeng/table';
+import { AdministrationGuard } from './guards/administration.guard';
+import { AdministrationService } from './services/administration.service';`;
     expect(actual).toEqual(expected);
   });
 
