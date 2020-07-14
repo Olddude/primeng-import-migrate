@@ -1,8 +1,8 @@
 {
-  "name": "typestuff",
+  "name": "primeng-import-migrate",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "prebuild": "rimraf dist/",
     "build": "tsc --build tsconfig.json",
@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/find": "^0.2.1",
     "@types/jest": "^26.0.4",
     "@types/node": "^14.0.23",
     "@typescript-eslint/eslint-plugin": "^3.6.1",
@@ -25,5 +26,8 @@
   "jest": {
     "preset": "ts-jest",
     "testEnvironment": "node"
+  },
+  "dependencies": {
+    "find": "^0.3.0"
   }
 }
