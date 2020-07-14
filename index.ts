@@ -1,3 +1,4 @@
 import { FileSystem } from './lib/file-system';
-export { FileSystem };
-// comment
+import { PrimengImportMigrator } from './lib/primeng-import-migrator';
+
+export { FileSystem, PrimengImportMigrator };
