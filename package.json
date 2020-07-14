@@ -1,8 +1,8 @@
 {
-  "name": "typestuff",
+  "name": "primeng-import-migrate",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "prebuild": "rimraf dist/",
     "build": "tsc --build tsconfig.json",
