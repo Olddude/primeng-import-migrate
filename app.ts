@@ -21,7 +21,7 @@ export class App {
           .then(([file, fileContent]) => Promise.all([file, this.migrator.migrate(fileContent)]))
           .then(([file, migratedContent]) => this.fs.write(file, migratedContent).then(() => file))
           .then(file => this.fs.read(file).then(() => file))
-          .then(file => console.log(`updated: ${file}`))
+          .then(file => console.log(`[INFO] | successfully updated file: ${file}`))
         )
       );
     });
