@@ -3,6 +3,21 @@
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Olddude/primeng-import-migrate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Olddude/primeng-import-migrate/issues"
+  },
+  "homepage": "https://github.com/Olddude/primeng-import-migrate#readme",
+  "keywords": [
+    "prime",
+    "primeng",
+    "angular",
+    "imports",
+    "migration"
+  ],
   "scripts": {
     "prebuild": "rimraf dist/",
     "build": "tsc --build tsconfig.json",

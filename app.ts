@@ -18,8 +18,8 @@ export class App {
     return this.fs.findFiles(this.pattern, this.root).then(files => {
       return Promise.all(
         files.map(file => Promise.all([file, this.fs.read(file)])
-          .then(([file, fileContent]) => Promise.all([file, this.migrator.migrate(fileContent)]))
-          .then(([file, migratedContent]) => this.fs.write(file, migratedContent).then(() => file))
+          .then(([file, original]) => Promise.all([file, this.migrator.migrate(original)]))
+          .then(([file, migrated]) => this.fs.write(file, migrated).then(() => file))
           .then(file => this.fs.read(file).then(() => file))
           .then(file => console.log(`[INFO] | successfully updated file: ${file}`))
         )
