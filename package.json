@@ -2,15 +2,23 @@
   "name": "primeng-import-migrate",
   "version": "1.0.0",
   "description": "",
-  "main": "index.ts",
+  "main": "dist/index.js",
   "scripts": {
     "prebuild": "rimraf dist/",
     "build": "tsc --build tsconfig.json",
+    "start": "ts-node cli.ts",
     "test": "jest",
     "lint": "eslint lib/**/*.ts"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Konstantin Novikov",
+  "license": "MIT",
+  "bin": {
+    "pim": "./dist/cli.js"
+  },
+  "dependencies": {
+    "commander": "^5.1.0",
+    "find": "^0.3.0"
+  },
   "devDependencies": {
     "@types/find": "^0.2.1",
     "@types/jest": "^26.0.4",
@@ -21,13 +29,11 @@
     "jest": "^26.1.0",
     "rimraf": "^3.0.2",
     "ts-jest": "^26.1.2",
+    "ts-node": "^8.10.2",
     "typescript": "^3.9.6"
   },
   "jest": {
     "preset": "ts-jest",
     "testEnvironment": "node"
-  },
-  "dependencies": {
-    "find": "^0.3.0"
   }
 }
