@@ -1,4 +1,4 @@
-import { FileSystem, PrimengImportMigrator } from './index';
+import { FileSystem, PrimengImportMigrator } from '.';
 
 export class App {
 
