@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "migrates primeng module import namespaces from 'primeng/primeng' to 'primeng/{module}'",
   "main": "dist/index.js",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Olddude/primeng-import-migrate.git"
@@ -25,7 +28,8 @@
     "build": "tsc --build tsconfig.json",
     "start": "ts-node cli.ts",
     "test": "jest",
-    "lint": "eslint lib/**/*.ts"
+    "lint": "eslint lib/**/*.ts",
+    "login": "npm login --registry=https://npm.pkg.github.com/"
   },
   "author": "Konstantin Novikov",
   "license": "MIT",
