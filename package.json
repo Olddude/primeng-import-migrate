@@ -1,8 +1,25 @@
 {
   "name": "primeng-import-migrate",
   "version": "1.0.0",
-  "description": "",
+  "description": "migrates primeng module import namespaces from 'primeng/primeng' to 'primeng/{module}'",
   "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Olddude/primeng-import-migrate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Olddude/primeng-import-migrate/issues"
+  },
+  "homepage": "https://github.com/Olddude/primeng-import-migrate#readme",
+  "keywords": [
+    "ng",
+    "prime",
+    "primefaces",
+    "primeng",
+    "angular",
+    "imports",
+    "migration"
+  ],
   "scripts": {
     "prebuild": "rimraf dist/",
     "build": "tsc --build tsconfig.json",
