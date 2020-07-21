@@ -9,6 +9,10 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@master
+    - name: Install Dependencies
+      run: npm install
+    - name: Production Build
+      run: npm run build
     - name: Set up Node.js
       uses: actions/setup-node@master
       with:
