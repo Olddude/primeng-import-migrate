@@ -1,6 +1,6 @@
 {
   "name": "primeng-import-migrate",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "migrates primeng module import namespaces from 'primeng/primeng' to 'primeng/{module}'",
   "main": "dist/index.js",
   "repository": {
