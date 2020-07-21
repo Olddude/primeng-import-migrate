@@ -11,6 +11,8 @@ jobs:
       run: npm ci
     - name: Check Package Security
       run: npm audit
+    - name: Check Outdated Packages
+      run: npm outdated
     - name: Check Coding Guidelines
       run: npm run lint
     - name: Production Build
