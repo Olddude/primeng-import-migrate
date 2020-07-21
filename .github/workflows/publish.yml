@@ -11,12 +11,3 @@ jobs:
       run: npm ci
     - name: Production Build
       run: npm run build
-    - name: Archive Production Artifact
-      uses: actions/upload-artifact@master
-      with:
-        name: primeng-import-migrate
-        path: dist
-    - name: Login
-      run: npm run login
-    - name: Publish Artifact
-      run: npm publish
