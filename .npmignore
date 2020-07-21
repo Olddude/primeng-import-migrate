@@ -1,0 +1,11 @@
+.github
+lib/**
+.editorconfig
+.eslintrc.json
+.gitignore
+.npmignore
+app.ts
+cli.ts
+index.ts
+package-lock.json
+tsconfig.json
