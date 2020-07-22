@@ -1,23 +1,25 @@
+import { ModuleImportOptions } from './module-import-options';
+
 export class PrimengImportMigrator {
 
-  migrate(fileContent: string): string {
-    const importStatements = this.allImportStatements(fileContent);
-    const newFileContent = importStatements.reduce((source, statement) => {
-      const imports = this.extractImports(statement);
-      const migratedStatement = this.buildMigratedImportStatement(imports);
-      return source.replace(statement, migratedStatement);
-    }, fileContent);
-    return newFileContent;
+  migrate(sourceFileContent: string, options: ModuleImportOptions): string {
+    const importStatements = this.extractModuleImportStatements(sourceFileContent);
+    const targetFileContent = importStatements.reduce((source, original) => {
+      const importedModules = this.extractImportedModules(original);
+      const migrated = this.migrateImportStatements(importedModules, options);
+      return source.replace(original, migrated);
+    }, sourceFileContent);
+    return targetFileContent;
   }
 
-  allImportStatements(fileContent: string): string[] {
-    const regex = /(import.*{.*}.*primeng\/primeng.*)|(import.*{[\w+|\s+\\,(\\r\\n|\\n)]{1,}}.*primeng\/primeng.*)/g;
+  extractModuleImportStatements(fileContent: string): string[] {
+    const regex = /(import.*{.*}.*primeng\/primeng.*)|(import.*{[\w+|\s+,(\r\n|\n)]{1,}}.*primeng\/primeng.*)/g;
     const result = fileContent.match(regex);
     return result || [];
   }
 
-  extractImports(importStatement: string): string[] {
-    return importStatement
+  extractImportedModules(moduleImportStatement: string): string[] {
+    return moduleImportStatement
       .split('{')[1]
       .split('}')[0]
       .replace(/\s+/g, '')
@@ -25,12 +27,18 @@ export class PrimengImportMigrator {
       .filter(_ => _ !== undefined && _ !== '');
   }
 
-  buildMigratedImportStatement(imports: string[]): string {
-    return imports.reduce((migratedStatement, module, index, array) => {
+  migrateImportStatements(importedModules: string[], options: ModuleImportOptions): string {
+    return importedModules.reduce((migratedStatement, module, index, array) => {
       const moduleName = module.toLowerCase().replace('module', '');
       const moduleNamespace = `primeng/${moduleName}`;
-      migratedStatement += `import { ${module} } from '${moduleNamespace}';`;
-      if (index < array.length -1) { migratedStatement += '\n'; }
+      migratedStatement += `import { ${module} } from `;
+      migratedStatement += `${options.quotemark}${moduleNamespace}${options.quotemark}`;
+      if (options.semicolon) {
+        migratedStatement += ';';
+      }
+      if (index < array.length -1) {
+        migratedStatement += options.linebreak;
+      }
       return migratedStatement;
     }, '');
   }
