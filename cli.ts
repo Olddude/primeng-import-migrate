@@ -23,10 +23,10 @@ function parseQuotemark(value: string): Quotemark {
 }
 
 function parseSemicolon(value: string): boolean {
-  if (value === 'false') {
+  if (value === 'false' || value === '\'false\'' || value === '"false"') {
     return false;
   } else {
-    return Boolean(value);
+    return !!value;
   }
 }
 
