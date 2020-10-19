@@ -1,4 +1,13 @@
-import { FileSystem } from './lib/file-system';
-import { PrimengImportMigrator } from './lib/primeng-import-migrator';
+import { FileSystem } from './lib/file-system/file-system';
+import {
+  Migrator,
+  PrimengImportMigrator,
+  ScssPTableMigrator
+} from './lib/migrator';
 
-export { FileSystem, PrimengImportMigrator };
+export {
+  FileSystem,
+  Migrator,
+  PrimengImportMigrator,
+  ScssPTableMigrator
+};

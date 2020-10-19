@@ -1,4 +1,4 @@
-import { Migrator } from './migrator';
+import { Migrator } from '..';
 
 export class ScssPTableMigrator implements Migrator {
 

@@ -1,4 +1,4 @@
-import { Migrator } from './migrator';
+import { Migrator } from '../migrator';
 
 export class PrimengImportMigrator implements Migrator {
 

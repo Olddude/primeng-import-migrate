@@ -1,6 +1,6 @@
-import { FileSystem, PrimengImportMigrator } from '.';
+import { FileSystem } from '.';
 import { Migrator } from './lib/migrator';
-import { ScssPTableMigrator } from './lib/scss-p-table-migrator';
+import { ScssPTableMigrator } from './lib/migrator';
 
 export class App {
 
@@ -18,6 +18,8 @@ export class App {
 
   run(): Promise<void[]> {
     return this.fs.findFiles(this.pattern, this.root).then(files => {
+      console.log('file matches:');
+      console.log(JSON.stringify(files, null, 2));
       return Promise.all(
         files.map(file => Promise.all([file, this.fs.read(file)])
           .then(([file, original]) => Promise.all([file, this.migrator.migrate(original)]))
