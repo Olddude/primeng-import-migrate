@@ -1,4 +1,6 @@
-export class PrimengImportMigrator {
+import { Migrator } from './migrator';
+
+export class PrimengImportMigrator implements Migrator {
 
   migrate(fileContent: string): string {
     const importStatements = this.allImportStatements(fileContent);

@@ -3,7 +3,9 @@
   "version": "1.0.5",
   "description": "migrates primeng module import namespaces from 'primeng/primeng' to 'primeng/{module}'",
   "main": "dist/index.js",
-  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Olddude/primeng-import-migrate.git"

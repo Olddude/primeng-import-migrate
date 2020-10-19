@@ -1,9 +1,11 @@
 import { FileSystem, PrimengImportMigrator } from '.';
+import { Migrator } from './lib/migrator';
+import { ScssPTableMigrator } from './lib/scss-p-table-migrator';
 
 export class App {
 
   private readonly fs: FileSystem = new FileSystem();
-  private readonly migrator: PrimengImportMigrator = new PrimengImportMigrator();
+  private readonly migrator: Migrator = new ScssPTableMigrator();
 
   private constructor(
     private readonly pattern: string | RegExp,
