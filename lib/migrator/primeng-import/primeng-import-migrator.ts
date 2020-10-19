@@ -1,21 +1,22 @@
+import { MatchFinder } from '../match-finder/match-finder';
 import { Migrator } from '../migrator';
 
 export class PrimengImportMigrator implements Migrator {
 
+  private readonly matchFinder = new MatchFinder();
+
+
   migrate(fileContent: string): string {
-    const importStatements = this.allImportStatements(fileContent);
+    const importStatements = this.matchFinder.find(
+      fileContent,
+      /(import.*{.*}.*primeng\/primeng.*)|(import.*{[\w+|\s+\\,(\\r\\n|\\n)]{1,}}.*primeng\/primeng.*)/g
+    );
     const newFileContent = importStatements.reduce((source, statement) => {
       const imports = this.extractImports(statement);
       const migratedStatement = this.buildMigratedImportStatement(imports);
       return source.replace(statement, migratedStatement);
     }, fileContent);
     return newFileContent;
-  }
-
-  allImportStatements(fileContent: string): string[] {
-    const regex = /(import.*{.*}.*primeng\/primeng.*)|(import.*{[\w+|\s+\\,(\\r\\n|\\n)]{1,}}.*primeng\/primeng.*)/g;
-    const result = fileContent.match(regex);
-    return result || [];
   }
 
   extractImports(importStatement: string): string[] {

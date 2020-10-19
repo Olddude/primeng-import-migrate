@@ -16,26 +16,6 @@ describe('PrimengImportMigrator', () => {
     expect(sut).toBeTruthy();
   });
 
-  it('should return an empty array if no matches are found', () => {
-    const actual = sut.allImportStatements(noPrimengFileContentStub);
-    const expected = [];
-    expect(actual).toEqual(expected);
-  });
-
-  it('should find all primeng import statements', () => {
-    const actual = sut.allImportStatements(allImportsFileContentStub);
-    const expected = [
-      `import {
-  TreeModule,
-  ToggleButtonModule,
-  ButtonModule, InputTextModule
-} from 'primeng/primeng';`,
-      'import { ButtonModule } from \'primeng/primeng\';',
-      'import { TableModule } from \'primeng/primeng\';'
-    ];
-    expect(actual).toEqual(expected);
-  });
-
   it('should extract imports from import match', () => {
     const actual = sut.extractImports(clusteredImportStub);
     const expected = [
